@@ -53,15 +53,15 @@ class Scene {
         light.castShadow = true;
         this.scene.add(light);
  
-        const rows = 10;
-        const cols = 10;
-        const size = 1;
+        const rows = 16;
+        const cols = 16;
+        const size = 0.5;
 
         this.gameOfLife = new GameOfLife(size, rows, cols);
         this.gameOfLife.init(this.scene);
     
         // camera position
-        this.camera.position.set(0, 0, 30);
+        this.camera.position.set(0, 0, Math.max(rows, cols) * size + 10);
         this.controls.center.set(0, 0, 0);
 
         this.controls.update();

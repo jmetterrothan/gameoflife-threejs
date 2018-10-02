@@ -1,7 +1,7 @@
 import THREE from 'three';
 
 class GameOfLife {
-    constructor(size = 1, rows = 16, cols = 16) {
+    constructor(size, rows, cols) {
         this.size = size;
         this.cols = cols;
         this.rows = rows;
@@ -12,7 +12,7 @@ class GameOfLife {
     init(scene) {
         const group = new THREE.Group();
 
-        const geometry = new THREE.BoxGeometry(this.size, this.size, this.size);
+        const geometry = new THREE.BoxBufferGeometry(this.size, this.size, this.size);
         const material = new THREE.MeshPhongMaterial({ color: 0xffff00 , shininess: 50 });
         const mesh = new THREE.Mesh(geometry, material);
 
@@ -22,13 +22,16 @@ class GameOfLife {
                     this.cells[row] = [];
                 }
 
-                this.cells[row][col] = mesh.clone();
-                this.cells[row][col].position.set(col * this.size, row * this.size, 0);
+                const cell = mesh.clone();
 
-                group.add(this.cells[row][col]);
+                cell.position.set(col * this.size, row * this.size, 0);
+                //cell.visible = false;
+
+                group.add(cell);
+                this.cells[row][col] = cell;
             } 
         }
-        group.position.set(-this.rows * this.size / 2, -this.cols * this.size / 2, 0);
+        group.position.set(-this.cols * this.size / 2, -this.rows * this.size / 2, 0);
 
         scene.add(group);
     }
