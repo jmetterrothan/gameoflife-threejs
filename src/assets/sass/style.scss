@@ -36,6 +36,7 @@ canvas {
 
     &__group {
         display: flex;
+        justify-content: space-between;
         min-width: 175px;
         margin-bottom: 12px;
 
@@ -53,5 +54,20 @@ canvas {
             line-height: 24px;
         }
 
+        input[type=number] {
+            width: 64px;
+        }
     }
+}
+
+.btn_pause, .btn_play {
+    font-weight: 700;
+}
+
+.btn_pause {
+    color: red;
+}
+
+.btn_play {
+    color: green;
 }
