@@ -12,9 +12,20 @@ const lerp = (a, b, t) => {
     return (1 - t) * a + t * b;
 };
 
+/**
+ * Modulo function that handles negative values
+ * @param {number} x 
+ * @param {number} m 
+ * @return number
+ */
+const mod = (x, m) => {
+    return (x % m + m) % m;
+};
+
 export default {
     TWO_PI,
     degToRad,
     radToDeg,
     lerp,
+    mod,
 };
